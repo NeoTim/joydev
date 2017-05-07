@@ -1,0 +1,15 @@
+diff --git a/src/gui/linux/jstick.c b/src/gui/linux/jstick.c
+index d3f14e2..c119de8 100644
+--- a/src/gui/linux/jstick.c
++++ b/src/gui/linux/jstick.c
+@@ -113,8 +113,10 @@ void js_control(_js *joy, _port *port) {
+ 
+ 	while (!js_read_event(&jse, joy)) {
+ 		_js_control()
++		fprintf(stderr, ".%d-%d.", jse.number, jse.value);
+ 
+ 		if (value && joy->input_decode_event) {
++			fprintf(stderr, "p");
+ 			joy->input_decode_event(mode, value, JOYSTICK, port);
+ 		}
+ 	}
